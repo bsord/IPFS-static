@@ -27,8 +27,19 @@ jobs:
 
       # Runs a single command using the runners shell
       - uses: aquiladev/ipfs-action@v0.1.5
+        id: ipfs
         with:
-          path: ./
+          path: ./www
           service: pinata
           pinataKey: ${{ secrets.PINATA_KEY }}
           pinataSecret: ${{ secrets.PINATA_SECRET }}
+      - uses: infraway/create-dns-record@v2.0
+        with:
+          type: "TXT"
+          name: "_dnslink.diffuse.cloud"
+          content: ${{join('dnslink=/ipfs/', steps.ipfs.outputs.hash)}}
+          ttl: 1
+          proxied: false
+          token: ${{ secrets.CLOUDFLARE_TOKEN }}
+          zone: ${{ secrets.CLOUDFLARE_ZONE }}
+
