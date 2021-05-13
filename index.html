@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Diffuse.Cloud</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="IPFS Static Website">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <h1 id="static-site-hosting-on-ipfs">Static site hosting on IPFS</h1>
+
+    <p>Look ma, <em>no centralized storage!</em></p>
+
+    <h2 id="were-moving-from-a-centralized-understanding-of-the-world-to-a-decentralized-understanding-of-the-world">We're moving from a centralized understanding of the world to a decentralized understanding of the world.</h2>
+
+    <p><strong>One domain, some HTML, and a pinned IPFS folder.</strong></p>
+
+    <p>That's all it took to host this website. It’s so simple that an ape could do it and it still has pros of a regular website:</p>
+
+    <ul>
+    <li>Load images and css from relatively linked urls</li>
+    <li>Simple to update and make changes</li>
+    <li>Functional behind a cache or proxy</li>
+    </ul>
+
+    <h3 id="and-guess-what">And guess what:</h3>
+
+    <p>You never knew it, but it’s easy for you to host static sites with IPFS too and heres how:</p>
+
+    <h2 id="get-the-ipfs-client">Get the IPFS client</h2>
+
+    <p>Downloading the client could not be more straight forward.<br />
+    You go to the IPFS <a href="https://docs.ipfs.io/install/ipfs-desktop/">repository</a> and download the file for your OS.<br />
+    Do you ever install and use a new application without reading the docs? Yeah, me too. In case you haven't downloaded something in the last decade, the docs are on the <a href="https://docs.ipfs.io/install/">IPFS docs page</a>. </p>
+
+    <h2 id="upload-your-html-to-IPFS">Upload your HTML to IPFS</h2>
+
+    <p>Create yourself something that doesn't remind you of MySpace.<br />
+    Take your properly written to spec index.html, minified css, and optimized images, and place them together in a folder. Only savages don't test their work before publishing; make sure your relative paths are working. 
+    Next, you yeet that folder to the InterPlanetary File System by importing it in the IPFS client. Then click 'Pin' on the folder in your IPFS client to get the identifier. Lets just say its hard to give directions to our web 1.0 masterpiece if we don't know where it is. </p>
+
+    <h2 id="create-dns-records">Gateway and DNS</h2>
+
+    <p>How do you navigate deep space?<br />
+    Not sure about you, but portals sound good to me. First you create a portal using a cname record that points to an <a href="https://docs.ipfs.io/concepts/ipfs-gateway/#ipfs-gateway"> IPFS gateway</a>. Then we create a <a href="https://docs.ipfs.io/concepts/ipfs-gateway/#dnslink"> _dnslink txt record </a> that tells the portal where to go.</p>
+    <p>
+      Here is an example:
+      <table style="width:100%" align="left" >
+        <tr>
+          <th>Type</th>
+          <th>Name</th>
+          <th>Content</th>
+        </tr>
+        <tr>
+          <td>CNAME</td>
+          <td>example.com</td>
+          <td>cloudflare-ipfs.com</td>
+        </tr>
+        <tr>
+          <td>TXT</td>
+          <td>_dnslink</td>
+          <td>dnslink=/ipfs/QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco</td>
+        </tr>
+      </table>
+      <br />
+      <strong>Note:</strong> There are multiple types of gateways and approaches to DNS, <em>this is just one of them.</em>
+    </p>
+
+    <h2 id="to-the-moon">To the moon!</h2>
+
+    <p>You've now succesfully launched your content to the InterPlanetary Filesystem. Send your friends the link to your domain or the direct ipfs gateway link. To challenge your 1337 haxors, see if they can get your page with just the CID.</p>
+
+    <blockquote>
+    <p>“The only way to control chaos and complexity is to give up some of that control.” 
+    — Gyan Nagpal</p>
+    </blockquote>
+
+    <hr />
+
+    <h2 id="epilogue">Epilogue</h2>
+
+    <p>Inspired by my slack friends over at #cryptocurrency and #server-ops.</p>
+
+    <p>Heres to keeping up with the ever increasing pace of technology advancemnt.	&#x1F680;</p>
+
+  </body>
+</html>
