@@ -37,7 +37,7 @@ jobs:
         with:
           type: "TXT"
           name: "_dnslink.diffuse.cloud"
-          content: 'dnslink=/ipfs/"${{ steps.ipfs.outputs.hash}}"'
+          content: 'dnslink=/ipfs/${{ steps.ipfs.outputs.hash}}'
           ttl: 1
           proxied: false
           token: ${{ secrets.CLOUDFLARE_TOKEN }}
